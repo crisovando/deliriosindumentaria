@@ -31,7 +31,12 @@ module.exports = {
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        icon: '2px 2px 6px rgba(0,0,0,0.4)',
+        iconHover: '2px 2px 11px rgba(0,0,0,0.7)'
       },
     },
   },
-}
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
+};

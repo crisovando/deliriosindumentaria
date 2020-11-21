@@ -5,3 +5,19 @@
 .grayscale {
   filter: grayscale(1);
 }
+
+.whatsapp-color{
+  /* fill: white; */
+  /* width: 50px;
+  height: 50px; */
+  /* padding: 3px; */
+  background-color: #4dc247;
+  /* border-radius: 50%; */
+  /* box-shadow: 2px 2px 6px rgba(0,0,0,0.4); */
+  /* box-shadow: 2px 2px 11px rgba(0,0,0,0.7); */
+  z-index: 10;
+}
+
+.whatsapp-ico:hover{
+  box-shadow: 2px 2px 11px rgba(0,0,0,0.7);
+}
