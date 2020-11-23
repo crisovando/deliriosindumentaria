@@ -13,8 +13,7 @@ export default function Index() {
   useEffect(() => {
     getDataForHome()
     .then(res => setResult(res));
-    
-  })
+  }, [])
   return (
     <>
       <Layout preview={false}>
