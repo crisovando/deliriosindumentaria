@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Container from '@/components/container'
 import Carrousel from '@/components/carrousel'
 import Layout from '@/components/layout'
@@ -7,12 +8,18 @@ import Head from 'next/head'
 import { CMS_NAME } from '@/lib/constants'
 import Store from '@/components/store'
 
-export default function Index({ result, preview }) {
+export default function Index() {
+  const [result, setResult] = useState({ banners: [], productos: [] })
+  useEffect(() => {
+    getDataForHome()
+    .then(res => setResult(res));
+    
+  })
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={false}>
         <Head>
-          <title>Tienda {CMS_NAME}</title>
+          <title>Delirios Indumentaria</title>
         </Head>
         <Container>
           <Header />
@@ -24,10 +31,3 @@ export default function Index({ result, preview }) {
   )
 }
 
-export async function getStaticProps({ preview = null }) {
-  const result = (await getDataForHome(preview));
-  console.log('result', result);
-  return {
-    props: { result, preview },
-  }
-}
