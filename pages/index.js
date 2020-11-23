@@ -25,7 +25,7 @@ export default function Index({ result, preview }) {
 }
 
 export async function getStaticProps({ preview = null }) {
-  const result = (await getDataForHome(preview))
+  const result = (await getDataForHome(preview));
   console.log('result', result);
   return {
     props: { result, preview },
