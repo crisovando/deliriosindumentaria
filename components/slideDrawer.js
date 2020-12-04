@@ -42,7 +42,7 @@ export default function SlideDrawer({ show, onClose, item }) {
             />
           )}
           <div
-            className={`transform h-full bg-white fixed top-0 right-0 w-1/4 z-200 shadow ease-in-out transition-all duration-300 ${
+            className={`transform h-full bg-white fixed top-0 right-0 w-full max-w-md z-200 shadow ease-in-out transition-all duration-300 ${
               show ? 'translate-x-0' : 'translate-x-full'
             } flex flex-col `}
           >
