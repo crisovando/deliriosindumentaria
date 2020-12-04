@@ -2,9 +2,11 @@ module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
     extend: {
-      fontFamily: {
-        sans:
-          '-apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      boxShadow: {
+        small: '0 5px 10px rgba(0, 0, 0, 0.12)',
+        medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        icon: '2px 2px 6px rgba(0,0,0,0.4)',
+        iconHover: '2px 2px 11px rgba(0,0,0,0.7)'
       },
       colors: {
         'accent-1': '#FAFAFA',
@@ -13,8 +15,25 @@ module.exports = {
         success: '#0070f3',
         cyan: '#79FFE1',
       },
-      spacing: {
-        28: '7rem',
+      fontFamily: {
+        sans:
+          '-apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      },
+      fontSize: {
+        '5xl': '2.5rem',
+        '6xl': '2.75rem',
+        '7xl': '4.5rem',
+        '8xl': '6.25rem',
+        '24px': '24px',
+        '11px': '11px'
+      },
+      height: {
+        '3px': '3px',
+        '360px': '360px'
+      },
+      inset: {
+        '30px': '30px',
+        'half': '50%'
       },
       letterSpacing: {
         tighter: '-.04em',
@@ -22,21 +41,42 @@ module.exports = {
       lineHeight: {
         tight: 1.2,
       },
-      fontSize: {
-        '5xl': '2.5rem',
-        '6xl': '2.75rem',
-        '7xl': '4.5rem',
-        '8xl': '6.25rem',
+      margin: {
+        '-20px': '-20px',
+        '30px': '30px'
       },
-      boxShadow: {
-        small: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
-        icon: '2px 2px 6px rgba(0,0,0,0.4)',
-        iconHover: '2px 2px 11px rgba(0,0,0,0.7)'
+      padding: {
+        '30px': '30px',
+        '20px': '20px'
       },
+      spacing: {
+        28: '7rem',
+      },
+      width: {
+        '3px': '3px'
+      }
+    },
+    zIndex: {
+      '0': 0,
+     '10': 10,
+     '20': 20,
+     '30': 30,
+     '40': 40,
+     '50': 50,
+     '25': 25,
+     '50': 50,
+     '75': 75,
+     '100': 100,
+     '200': 200,
+      'auto': 'auto',
     },
   },
   future: {
     removeDeprecatedGapUtilities: true,
   },
+  variants: {
+    extend: {
+      padding: ['even']
+    }
+  }
 };

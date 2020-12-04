@@ -1,4 +1,19 @@
+import { useState } from 'react';
+import SlideDrawer from './slideDrawer';
+
 export default function Store({ products }) {
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [productSelected, setProductSelected] = useState(null);
+
+  const closeDrawer = () => {
+    setOpenDrawer(false);
+  }
+
+  const openCart = (product) => {
+    setProductSelected(product);
+    setOpenDrawer(true);
+  }
+
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
@@ -39,9 +54,9 @@ export default function Store({ products }) {
           </div>
         </nav>
         {products.map((product) => (
-          <div key={product.id} className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-            <a href="#">
-              <img className="hover:grow hover:shadow-lg" src={product.fotos[0].formats.small.url} />
+          <div key={product.id} className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col" onClick={() =>openCart(product)}>
+            <div>
+              <img className="hover:grow hover:shadow-lg cursor-pointer" src={product.fotos[0].formats.small.url} />
               <div className="pt-3 flex items-center justify-between">
                 <p className="">{product.nombre}</p>
                 <svg
@@ -53,9 +68,10 @@ export default function Store({ products }) {
                 </svg>
               </div>
               <p className="pt-1 text-gray-900">${product.precio}</p>
-            </a>
+            </div>
           </div>
         ))}
+        <SlideDrawer show={openDrawer} onClose={closeDrawer} item={productSelected} />
       </div>
     </section>
   );

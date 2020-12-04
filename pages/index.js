@@ -26,6 +26,7 @@ export default function Index() {
           <Store products={result.productos} />
         </Container>
       </Layout>
+      <div id="modalContainer" />
     </>
   )
 }

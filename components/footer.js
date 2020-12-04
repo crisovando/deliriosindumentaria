@@ -93,7 +93,7 @@ export default function Footer() {
                     <div className="flex items-center mt-8 text-gray-600 dark:text-gray-400"></div>
 
                     <div className="flex flex-row space-x-4">
-                      <a target="_blank" href="https://wa.me/541131109155">
+                      <a target="_blank" href="https://wa.me/541130089134">
                         <svg
                           viewBox="0 0 32 32"
                           fill="white"
