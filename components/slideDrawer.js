@@ -51,6 +51,7 @@ export default function SlideDrawer({ show, onClose, item }) {
                 <button
                   className="w-auto h-10 flex items-center justify-center text-gray-500 absolute top-half -mt-20px left-30px transition duration-300 focus:outline-none hover:text-gray-900 inset-1/2"
                   aria-label="close"
+                  onClick={onClose}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
