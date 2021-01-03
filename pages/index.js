@@ -23,7 +23,7 @@ export default function Index() {
         <Container>
           <Header />
           <Carrousel data={result.banners} />
-          <Swiper />
+          <Swiper categories={result.categorias} />
           <Store products={result.productos} />
         </Container>
       </Layout>

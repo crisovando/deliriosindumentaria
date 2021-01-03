@@ -49,8 +49,9 @@ function liteCarousel({ categories }) {
         <div
           className="swiper-wrapper"
         >
-
-          <div
+          {categories && categories.map((el) => (
+            <div
+            key={el.id}
             className="swiper-slide swiper-slide-active"
           >
             <div
@@ -78,7 +79,7 @@ function liteCarousel({ categories }) {
                 </div>
                 <img
                   alt="Household"
-                  data-src="https://s3.amazonaws.com/redqteam.com/medsy/category/house-hold%20%281%29.png"
+                  data-src={el.thumb?.formats.thumbnail.url}
                   decoding="async"
                   className=""
                   style={{
@@ -97,65 +98,13 @@ function liteCarousel({ categories }) {
                     minHeight: '100%',
                     maxHeight: '100%',
                   }}
-                  src="https://s3.amazonaws.com/redqteam.com/medsy/category/house-hold%20%281%29.png"
+                  src={el.thumb?.formats.thumbnail.url}
                 />
               </div>
-              <p className="font-semibold text-gray-900 truncate">Household</p>
+              <p className="font-semibold text-gray-900 truncate">{el.nombre}</p>
             </div>
           </div>
-          <div
-            className="swiper-slide swiper-slide-active"
-          >
-            <div
-              className="p-4 flex flex-col border rounded-md text-center  border-gray-300"
-              role="button"
-            >
-              <div
-                style={{
-                  display: 'inline-block',
-                  maxWidth: '100%',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  boxSizing: 'border-box',
-                  margin: 0,
-                }}
-              >
-                <div style={{ boxSizing: 'border-box', display: 'block', maxWidth: '100%' }}>
-                  <img
-                    style={{ maxWidth: '100%', display: 'block' }}
-                    alt=""
-                    aria-hidden="true"
-                    role="presentation"
-                    src='data:image/svg+xml;charset=utf-8,<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" version="1.1"/>'
-                  />
-                </div>
-                <img
-                  alt="Household"
-                  data-src="https://s3.amazonaws.com/redqteam.com/medsy/category/house-hold%20%281%29.png"
-                  decoding="async"
-                  className=""
-                  style={{
-                    visibility: 'visible',
-                    position: 'absolute',
-                    inset: '0px',
-                    boxSizing: 'border-box',
-                    padding: '0px',
-                    border: 'none',
-                    margin: 'auto',
-                    display: 'block',
-                    width: '0px',
-                    height: '0px',
-                    minWidth: '100%',
-                    maxWidth: '100%',
-                    minHeight: '100%',
-                    maxHeight: '100%',
-                  }}
-                  src="https://s3.amazonaws.com/redqteam.com/medsy/category/house-hold%20%281%29.png"
-                />
-              </div>
-              <p className="font-semibold text-gray-900 truncate">Household</p>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="flex items-center absolute top-half w-full z-10">
           <button
