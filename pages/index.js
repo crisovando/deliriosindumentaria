@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import Container from '@/components/container'
-import Carrousel from '@/components/carrousel'
-import Layout from '@/components/layout'
+import Container from '@/components/container';
+import Carrousel from '@/components/carrousel';
+import Layout from '@/components/layout';
 import Header from '@/components/header';
-import { getDataForHome } from '@/lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '@/lib/constants'
-import Store from '@/components/store'
+import { getDataForHome } from '@/lib/api';
+import Head from 'next/head';
+import Store from '@/components/store';
+import Swiper from '@/components/liteCarousel';
 
 export default function Index() {
   const [result, setResult] = useState({ banners: [], productos: [] })
@@ -23,6 +23,7 @@ export default function Index() {
         <Container>
           <Header />
           <Carrousel data={result.banners} />
+          <Swiper />
           <Store products={result.productos} />
         </Container>
       </Layout>

@@ -29,6 +29,7 @@ module.exports = {
       },
       height: {
         '3px': '3px',
+        '30px': '30px',
         '360px': '360px'
       },
       inset: {
@@ -43,7 +44,8 @@ module.exports = {
       },
       margin: {
         '-20px': '-20px',
-        '30px': '30px'
+        '30px': '30px',
+        '35px': '35px'
       },
       padding: {
         '30px': '30px',
@@ -53,7 +55,11 @@ module.exports = {
         28: '7rem',
       },
       width: {
-        '3px': '3px'
+        '3px': '3px',
+        '30px': '30px'
+      },
+      transitionDuration: {
+        250: '.25s'
       }
     },
     zIndex: {

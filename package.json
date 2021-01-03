@@ -16,7 +16,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "remark": "12.0.0",
-    "remark-html": "11.0.2"
+    "remark-html": "11.0.2",
+    "swiper": "^6.4.5"
   },
   "devDependencies": {
     "eslint": "^7.12.0",
