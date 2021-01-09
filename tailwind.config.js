@@ -44,8 +44,10 @@ module.exports = {
       },
       margin: {
         '-20px': '-20px',
+        '1px': '1px',
         '30px': '30px',
-        '35px': '35px'
+        '35px': '35px',
+        '1.5': '0.375rem'
       },
       padding: {
         '30px': '30px',

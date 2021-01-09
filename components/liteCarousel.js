@@ -1,14 +1,44 @@
 import { useEffect, useState } from 'react';
-import Swiper from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import { getProductsByCategory } from '@/lib/api';
 
-function liteCarousel({ categories }) {
+SwiperCore.use([Navigation]);
+
+function liteCarousel({ categories, children }) {
   const [swiper, setSwiper] = useState(null);
+  const [categoryActive, setCategoryActive] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
+
   useEffect(() => {
-    setSwiper(
-      new Swiper('.swiper-categories', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        breakpoints: {
+    if (categoryActive !== '') {
+      getProductsByCategory(categoryActive)
+        .then((data) => {
+          setFilteredProducts(data.productos)
+        }) 
+    }
+  }, [categoryActive])
+
+  const prev = () => {
+    swiper.slidePrev();
+  };
+
+  const next = () => {
+    swiper.slideNext();
+  };
+
+  const changeCategory = e => {
+    setCategoryActive(e.currentTarget.value)
+    setIsFiltered(true);
+  };
+
+  return (
+    <div className="category pt-8 container mx-auto pb-12">
+      <Swiper
+        onInit={(swipered) => setSwiper(swipered)}
+        spaceBetween={10}
+        breakpoints={{
           240: {
             slidesPerView: 2,
           },
@@ -24,93 +54,49 @@ function liteCarousel({ categories }) {
           1200: {
             slidesPerView: 6,
           },
-          1400: {
-            slidesPerView: 8,
-          },
           1900: {
             slidesPerView: 10,
           },
-        },
-      })
-    );
-  }, []);
-
-  const prev = () => {
-    swiper.slidePrev();
-  };
-
-  const next = () => {
-    swiper.slideNext();
-  };
-
-  return (
-    <div className="category pt-8 container mx-auto pb-12">
-      <div className="swiper-categories swiper-container swiper-container-initialized swiper-container-horizontal">
-        <div
-          className="swiper-wrapper"
-        >
-          {categories && categories.map((el) => (
-            <div
-            key={el.id}
-            className="swiper-slide swiper-slide-active"
-          >
-            <div
-              className="p-4 flex flex-col border rounded-md text-center  border-gray-300"
-              role="button"
-            >
-              <div
-                style={{
-                  display: 'inline-block',
-                  maxWidth: '100%',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  boxSizing: 'border-box',
-                  margin: 0,
-                }}
+        }}
+        navigation={{
+          nextEl: '.next-slider',
+          prevEl: '.prev-slider',
+        }}
+        cssMode
+      >
+        {categories &&
+          categories.map((el) => (
+            <SwiperSlide key={el.id} className="h-full flex">
+              <label
+                className="w-full flex flex-col rounded-lg bg-white relative mt-1px
+                           overflow-hidden cursor-pointer border-solid border border-gray-300"
               >
-                <div style={{ boxSizing: 'border-box', display: 'block', maxWidth: '100%' }}>
-                  <img
-                    style={{ maxWidth: '100%', display: 'block' }}
-                    alt=""
-                    aria-hidden="true"
-                    role="presentation"
-                    src='data:image/svg+xml;charset=utf-8,<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" version="1.1"/>'
-                  />
-                </div>
-                <img
-                  alt="Household"
-                  data-src={el.thumb?.formats.thumbnail.url}
-                  decoding="async"
-                  className=""
-                  style={{
-                    visibility: 'visible',
-                    position: 'absolute',
-                    inset: '0px',
-                    boxSizing: 'border-box',
-                    padding: '0px',
-                    border: 'none',
-                    margin: 'auto',
-                    display: 'block',
-                    width: '0px',
-                    height: '0px',
-                    minWidth: '100%',
-                    maxWidth: '100%',
-                    minHeight: '100%',
-                    maxHeight: '100%',
-                  }}
-                  src={el.thumb?.formats.thumbnail.url}
+                <input
+                  type="radio"
+                  value={el.nombre}
+                  name="product-category"
+                  previousValue="false"
+                  className="absolute opacity-0 top-0 left-0 cursor-pointer h-full w-full"
+                  onChange={changeCategory}
                 />
-              </div>
-              <p className="font-semibold text-gray-900 truncate">{el.nombre}</p>
-            </div>
-          </div>
+                <span className="flex items-center justify-center w-full overflow-hidden h-40">
+                  <img
+                    alt={el.nombre}
+                    className="max-w-full block w-full h-full object-cover"
+                    src={el.thumb?.formats.small.url}
+                  />
+                </span>
+                <span className="flex flex-col items-center justify-center text-center p-3 flex-grow">
+                  <span className="block font-semibold mb-1.5 text-black">{el.nombre}</span>
+                </span>
+              </label>
+            </SwiperSlide>
           ))}
-        </div>
-        <div className="flex items-center absolute top-half w-full z-10">
+        <div slot="container-end" className="flex items-center absolute top-half w-full z-10">
           <button
             onClick={prev}
             aria-label="prev-button"
-            className="w-30px h-30px flex items-center justify-center rounded-full text-gray-00 bg-white shadow-navigation absolute transition duration-250 hover:bg-gray-900 hover:text-white focus:outline-none left-0 ml-35px swiper-previous-button swiper-button-disabled"
+            className="prev-slider"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +115,7 @@ function liteCarousel({ categories }) {
           <button
             onClick={next}
             aria-label="next-button"
-            className="w-30px h-30px flex items-center justify-center rounded-full text-gray-00 bg-white shadow-navigation absolute transition duration-250 hover:bg-gray-900 hover:text-white focus:outline-none right-0 mr-35px swiper-next-button"
+            className="next-slider"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +131,8 @@ function liteCarousel({ categories }) {
             </svg>
           </button>
         </div>
-      </div>
+      </Swiper>
+      {children({ filteredProducts, isFiltered })}
     </div>
   );
 }

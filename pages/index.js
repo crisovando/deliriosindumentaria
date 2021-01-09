@@ -23,8 +23,13 @@ export default function Index() {
         <Container>
           <Header />
           <Carrousel data={result.banners} />
-          <Swiper categories={result.categorias} />
-          <Store products={result.productos} />
+          <Swiper categories={result.categorias}>
+            {({ isFiltered, filteredProducts}) => {
+              return (
+                <Store products={isFiltered ? filteredProducts : result.productos}/>
+              )
+            }}
+          </Swiper>
         </Container>
       </Layout>
       <div id="modalContainer" />

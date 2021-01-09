@@ -1,5 +1,6 @@
 import '@/styles/index.css';
 import '@/styles/carrousel.css';
+import '@/styles/swiper.css';
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.min.css';
