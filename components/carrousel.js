@@ -14,13 +14,14 @@ const Carrousel = ({ data }) => (
             aria-hidden="true"
             hidden
             defaultChecked={index === 0 ? 'checked' : ''}
+            role="slider"
           />
           <div className="carousel-item absolute opacity-0" style={{ height: '50vh' }}>
             <div
               className="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right"
             >
               <img 
-                alt="image cover banner"
+                alt={foto.name}
                 className="object-cover w-full"
                 src={foto.url}
                 srcSet={`

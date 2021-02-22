@@ -8,12 +8,9 @@ import Head from 'next/head';
 import Store from '@/components/store';
 import Swiper from '@/components/liteCarousel';
 
-export default function Index() {
-  const [result, setResult] = useState({ banners: [], productos: [] })
-  useEffect(() => {
-    getDataForHome()
-    .then(res => setResult(res));
-  }, [])
+const initData = { banners: [], productos: [] }
+
+export default function Index({ result }) {
   return (
     <>
       <Layout preview={false}>
@@ -37,3 +34,9 @@ export default function Index() {
   )
 }
 
+export async function getStaticProps({ preview = null }) {
+  const result = (await getDataForHome()) || initData;
+  return {
+    props: { result, preview },
+  }
+}

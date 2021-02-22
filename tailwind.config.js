@@ -30,9 +30,12 @@ module.exports = {
       height: {
         '3px': '3px',
         '30px': '30px',
+        '320px': '320px',
+        '340px': '340px',
         '360px': '360px'
       },
       inset: {
+        '15px': '15px',
         '30px': '30px',
         'half': '50%'
       },
@@ -50,8 +53,10 @@ module.exports = {
         '1.5': '0.375rem'
       },
       padding: {
-        '30px': '30px',
-        '20px': '20px'
+        '5px': '5px',
+        '10px': '10px',
+        '20px': '20px',
+        '30px': '30px'
       },
       spacing: {
         28: '7rem',
