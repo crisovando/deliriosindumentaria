@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import Tag from '@/components/tag';
 
 let modalContainer;
 
@@ -97,46 +98,19 @@ export default function SlideDrawer({ show, onClose, item }) {
                         <div className="flex flex-col items-start mb-4">
                           <span className="text-gray-900 font-semibold mb-2">${item?.precio}</span>
                           <span className="mb-3">{item?.nombre}</span>
-                          <p className="flex items-center mb-5">
-                            <span className=" text-gray-500 text-11px capitalize">
-                              {item?.categoria.nombre}
-                            </span>
+                          <p className="flex items-center">
+                            <Tag text={item?.categoria.nombre} />
                             <span className="flex bg-gray-500 w-3px h-3px rounded mx-3"></span>
-                            <span className=" text-gray-500 text-11px">{item?.genero}</span>
+                            <Tag text={item?.genero} />
                           </p>
-                          {/* <button
-                            className="font-semibold text-11px text-gray-800 mt-2 focus:outline-none"
-                            aria-label="details"
-                          >
-                            More Details
-                          </button> */}
                         </div>
                         <div className="flex w-full flex-col">
-                          <div className="flex flex-col justify-start full mt-10 pr-30px even:pr-0">
+                          <div className="flex flex-col justify-start full pr-30px even:pr-0">
                             <span className="text-gray-500 text-11px mb-2">Descripcion</span>
                             <span className="font-normal text-13px text-gray-900 capitalize">
                               {item?.descripcion}
                             </span>
                           </div>
-                          {/* <div className="flex flex-col justify-start full mt-10 pr-30px even:pr-0">
-                            <span className="text-gray-500 text-11px mb-2">Dosages</span>
-                            <span className="font-normal text-13px text-gray-900 capitalize">
-                              Drink 1 bottle of Lift™ whenever you need a measured burst of fast
-                              acting glucose.
-                            </span>
-                          </div>
-                          <div className="flex flex-col justify-start full mt-10 pr-30px even:pr-0">
-                            <span className="text-gray-500 text-11px mb-2">Active Substance</span>
-                            <span className="font-normal text-13px text-gray-900 capitalize">
-                              Water, dextrose monohydrate (25%), citric acid (E330),
-                            </span>
-                          </div>
-                          <div className="flex flex-col justify-start full mt-10 pr-30px even:pr-0">
-                            <span className="text-gray-500 text-11px mb-2">Manufacturer</span>
-                            <span className="font-normal text-13px text-gray-900 capitalize">
-                              Lift
-                            </span>
-                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -146,7 +120,6 @@ export default function SlideDrawer({ show, onClose, item }) {
                   <div className="os-scrollbar-track os-scrollbar-track-off bg-transparent pointer-events-none">
                     <div
                       className="os-scrollbar-handle w-full opacity-0 pointer-events-none"
-                      // style={{ transform: 'translate(0px, 0px)' }}
                     ></div>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+import { getProductsByCategory } from '@/lib/api';
 import { useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import SlideDrawer from './slideDrawer';
@@ -17,24 +18,22 @@ export default function Store({ products }) {
 
   return (
     <section className="bg-white py-8">
-      <div className="cartsy-product-search-results grid-cols-xxl-5 grid-cols-lg-4 grid-cols-md-3 grid-cols-xs-2 gap-30">
+      <div className="grid md:grid-cols-4 gap-8">
         {products.map((product) => (
-          <div className="relative bg-white rounded-r overflow-hidden flex flex-col transition ease-in-out duration-75">
-            <div
-              className="h-400px sm:h-320px md:h-340px lg:h-380px xl:h-400px 2xl:h-440px
-                        flex justify-center items-center relative"
-            >
-              <div>
-                {/* badge 
-                <span className="absolute top-15px right-15px py-5px px-10px leading-none text-white text-sm"></span> 
-                */}
-                <LazyLoad>
-                  <img
-                    src={product.fotos[0].formats.small.url}
-                    className="w-full h-full object-cover rounded-none mb-0"
-                  />
-                </LazyLoad>
-              </div>
+          <div className="bg-white rounded-r overflow-hidden flex flex-col transition ease-in-out duration-75
+              hover:shadow-lg transform hover:-translate-y-2" onClick={() =>openCart(product)}>
+            <div className="product-thumb">
+              <LazyLoad>
+                <img
+                  src={product.fotos[0].formats.small.url}
+                  alt={product.descripcion}
+                />
+              </LazyLoad>
+            </div>
+            <div className="product-description">
+              <div className="text-base font-semibold my-0.5 text-black">{product.nombre}</div>
+              <div className="text-sm h-5 overflow-hidden whitespace-no-wrap" style={{ textOverflow: 'ellipsis' }}>{product.descripcion}</div>
+              <div className="flex align-middle font-semibold text-lg mt-3 text-black">${product.precio}</div>
             </div>
           </div>
           // <div key={product.id} className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col" onClick={() =>openCart(product)}>
