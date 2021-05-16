@@ -75,7 +75,7 @@ function liteCarousel({ categories, children }) {
                   type="radio"
                   value={el.nombre}
                   name="product-category"
-                  previousValue="false"
+                  previousvalue="false"
                   className="absolute opacity-0 top-0 left-0 cursor-pointer h-full w-full"
                   onChange={changeCategory}
                 />

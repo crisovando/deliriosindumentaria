@@ -20,7 +20,7 @@ export default function Store({ products }) {
     <section className="bg-white py-8">
       <div className="grid md:grid-cols-4 gap-8">
         {products.map((product) => (
-          <div className="bg-white rounded-r overflow-hidden flex flex-col transition ease-in-out duration-75
+          <div key={product.id} className="bg-white rounded-r overflow-hidden flex flex-col transition ease-in-out duration-75
               hover:shadow-lg transform hover:-translate-y-2" onClick={() =>openCart(product)}>
             <div className="product-thumb">
               <LazyLoad>

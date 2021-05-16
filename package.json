@@ -1,5 +1,5 @@
 {
-  "name": "cms-strapi",
+  "name": "delirios-indumentaria",
   "version": "1.0.0",
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
@@ -29,7 +29,6 @@
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
-    "tailwind-scrollbar": "^1.1.2",
     "tailwindcss": "^1.9.6"
   },
   "license": "MIT"
