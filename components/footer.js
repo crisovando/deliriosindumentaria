@@ -1,7 +1,7 @@
 import Container from './container';
 import { EXAMPLE_PATH } from '@/lib/constants';
 
-export default function Footer() {
+export default function Footer({ contactData }) {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
@@ -41,7 +41,7 @@ export default function Footer() {
                         />
                       </svg>
                       <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                        Calle 158 6115 Hudson, Berazategui
+                        {`${contactData.Calle} ${contactData.Localidad}, ${contactData.Partido}`}
                       </div>
                     </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
                         />
                       </svg>
                       <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                        (+54) 11-3110-9155
+                        {`(+54) ${contactData.Telefono}`}
                       </div>
                     </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
                         />
                       </svg>
                       <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                        leluleo@hotmail.com
+                        {contactData.Email}
                       </div>
                     </div>
                   </div>

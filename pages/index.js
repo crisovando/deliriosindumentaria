@@ -10,10 +10,10 @@ import Swiper from '@/components/liteCarousel';
 
 const initData = { banners: [], productos: [] }
 
-export default function Index({ result }) {
+export default function Index({ result, preview }) {
   return (
     <>
-      <Layout preview={false}>
+      <Layout preview={preview} contactData={result.datosDeContacto}>
         <Head>
           <title>Delirios Indumentaria</title>
         </Head>

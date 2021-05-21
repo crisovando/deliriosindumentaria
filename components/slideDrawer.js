@@ -5,27 +5,11 @@ import Tag from '@/components/tag';
 let modalContainer;
 
 export default function SlideDrawer({ show, onClose, item }) {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const scrollVertical = document.querySelector('#scrollVertical');
-      document.body.style.setProperty(
-        '--offset',
-        `${scrollVertical.parentElement.clientHeight - scrollVertical.clientHeight + 20}px`
-      );
-    }
-  });
 
   if (typeof window !== 'undefined') {
     modalContainer = document.querySelector('#modalContainer');
   }
 
-  function handleScroll(event) {
-    const scrollTop = event.target.scrollTop;
-    document.body.style.setProperty(
-      '--scroll',
-      scrollTop / (document.body.offsetHeight - window.innerHeight)
-    );
-  }
 
   const sendWhatsapp = (nombre) => {
     const baseUrl = 'https://wa.me/541130089134/'
@@ -83,8 +67,7 @@ export default function SlideDrawer({ show, onClose, item }) {
                 <div className="os-content-glue m-0"></div>
                 <div className="os-padding">
                   <div
-                    onScroll={handleScroll}
-                    className="os-viewport os-viewport-native-scrollbars-invisible"
+                    className="os-viewport"
                     style={{ overflowY: 'scroll' }}
                   >
                     <div className="os-content p-0 h-full w-full">
@@ -116,23 +99,6 @@ export default function SlideDrawer({ show, onClose, item }) {
                     </div>
                   </div>
                 </div>
-                <div className="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable pointer-events-none">
-                  <div className="os-scrollbar-track os-scrollbar-track-off bg-transparent pointer-events-none">
-                    <div
-                      className="os-scrollbar-handle w-full opacity-0 pointer-events-none"
-                    ></div>
-                  </div>
-                </div>
-                <div className="os-scrollbar os-scrollbar-vertical">
-                  <div className="os-scrollbar-track os-scrollbar-track-off">
-                    <div
-                      id="scrollVertical"
-                      className="os-scrollbar-handle"
-                      style={{ height: '36.5591%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="os-scrollbar-corner"></div>
               </div>
               <div className="flex flex-col p-30px">
                 <button
