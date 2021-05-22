@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Container from '@/components/container';
 import Carrousel from '@/components/carrousel';
 import Layout from '@/components/layout';
