@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 const Carrousel = ({ data }) => (
   <div className="carousel relative container mx-auto" style={{ maxWidth: '1600px' }}>
@@ -20,16 +21,11 @@ const Carrousel = ({ data }) => (
             <div
               className="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right"
             >
-              <img 
+              <Image 
                 alt={foto.name}
                 className="object-cover w-full"
                 src={foto.url}
-                srcSet={`
-                  ${foto.formats.small.url} 320w,
-                  ${foto.formats.medium.url} 480w,
-                  ${foto.formats.large.url} 800w,
-                  ${foto.url} 1080w,
-                `}
+                layout="fill"
               />
               <div className="container mx-auto absolute">
                 <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">

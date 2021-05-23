@@ -1,7 +1,11 @@
 import { getProductsByCategory } from '@/lib/api';
 import { useState } from 'react';
 import LazyLoad from 'react-lazyload';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Spinner from './spinner';
+import { getUrl } from '../utils/cloudinary'
+
 
 const DynamicDrawer = dynamic(() => import('./slideDrawer'))
 
@@ -25,10 +29,13 @@ export default function Store({ products }) {
           <div key={product.id} className="bg-white rounded-r overflow-hidden flex flex-col transition ease-in-out duration-75
               hover:shadow-lg transform hover:-translate-y-2" onClick={() =>openCart(product)}>
             <div className="product-thumb">
-              <LazyLoad>
-                <img
-                  src={product.fotos[0].formats.small.url}
+              <LazyLoad placeholder={<Spinner />} debounce={false}>
+                <Image
+                  src={getUrl(product.fotos[0].formats.small.url)}
                   alt={product.descripcion}
+                  layout="fill"
+                  className="thumb"
+                  loading="eager"
                 />
               </LazyLoad>
             </div>
