@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
+import { getUrl } from '../utils/cloudinary';
 
 const Carrousel = ({ data }) => (
   <div className="carousel relative container mx-auto" style={{ maxWidth: '1600px' }}>
@@ -24,7 +25,7 @@ const Carrousel = ({ data }) => (
               <Image 
                 alt={foto.name}
                 className="object-cover w-full"
-                src={foto.url}
+                src={getUrl(foto.url)}
                 layout="fill"
               />
               <div className="container mx-auto absolute">
