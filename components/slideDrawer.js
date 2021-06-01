@@ -1,21 +1,25 @@
-import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper/core';
+import Image from 'next/image';
 import Tag from '@/components/tag';
+import { getUrl } from '../utils/cloudinary'
+
+// install Swiper modules
+SwiperCore.use([Navigation]);
 
 let modalContainer;
 
 export default function SlideDrawer({ show, onClose, item }) {
-
   if (typeof window !== 'undefined') {
     modalContainer = document.querySelector('#modalContainer');
   }
 
-
   const sendWhatsapp = (nombre) => {
-    const baseUrl = 'https://wa.me/541130089134/'
-    const url = `${baseUrl}?text=${encodeURI(`Me interesa ${nombre}. Esta disponible?`)}`
+    const baseUrl = 'https://wa.me/541130089134/';
+    const url = `${baseUrl}?text=${encodeURI(`Me interesa ${nombre}. Esta disponible?`)}`;
     window.open(url, '_blank');
-  }
+  };
 
   return modalContainer
     ? ReactDOM.createPortal(
@@ -66,17 +70,24 @@ export default function SlideDrawer({ show, onClose, item }) {
                 </div>
                 <div className="os-content-glue m-0"></div>
                 <div className="os-padding">
-                  <div
-                    className="os-viewport"
-                    style={{ overflowY: 'scroll' }}
-                  >
+                  <div className="os-viewport" style={{ overflowY: 'scroll' }}>
                     <div className="os-content p-0 h-full w-full">
                       <div className="flex flex-col p-30px pt-0">
                         <div className="flex items-center justify-center w-full h-360px overflow-hidden rounded mb-30px">
-                          <img
-                            src={item?.fotos[0].formats.small.url}
-                            alt="Lift Glucose Juice Shot Berry Burst Flavour - 60 ml-img"
-                          />
+                          <Swiper navigation={item?.fotos.length > 1} className="h-full w-full" cssMode>
+                            {item?.fotos.map(foto => (
+                              <SwiperSlide key={foto.formats.small.url}>
+                                <Image
+                                  src={getUrl(foto.formats.small.url)}
+                                  alt={item.descripcion}
+                                  layout="fill"
+                                  objectFit="contain"
+                                  className="thumb"
+                                  loading="eager"
+                                />
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
                         </div>
                         <div className="flex flex-col items-start mb-4">
                           <span className="text-gray-900 font-semibold mb-2">${item?.precio}</span>
