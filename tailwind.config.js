@@ -1,8 +1,5 @@
 module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
-  future: {
-    purgeLayersByDefault: true,
-  },
   theme: {
     extend: {
       boxShadow: {

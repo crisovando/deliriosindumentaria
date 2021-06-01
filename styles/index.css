@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('spinner.css');
+@import 'spinner.css';
 
 @-webkit-keyframes os-resize-observer-dummy-animation {
   0% {

@@ -1,9 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
+import Image from 'next/image';
 import { getProductsByCategory } from '@/lib/api';
+import { getUrl } from '../utils/cloudinary'
 
 SwiperCore.use([Navigation]);
+
+const getUrlImage = (thumb) => {
+  if (thumb.formats) {
+    return thumb.formats.small ? 
+      thumb.formats.small.url
+      : thumb.url;
+  }
+  return thumb.url;
+}
 
 function liteCarousel({ categories, children }) {
   const [swiper, setSwiper] = useState(null);
@@ -80,10 +91,14 @@ function liteCarousel({ categories, children }) {
                   onChange={changeCategory}
                 />
                 <span className="flex items-center justify-center w-full overflow-hidden h-40">
-                  <img
+                  <Image
                     alt={el.nombre}
                     className="max-w-full block w-full h-full object-cover"
-                    src={el.thumb?.formats.small.url}
+                    src={getUrl(getUrlImage(el.thumb))}
+                    height={214}
+                    width={203}
+                    layout="fixed"
+                    loading="eager"
                   />
                 </span>
                 <span className="flex flex-col items-center justify-center text-center p-3 flex-grow">

@@ -41,7 +41,7 @@ export default function Store({ products }) {
             </div>
             <div className="product-description">
               <div className="text-base font-semibold my-0.5 text-black">{product.nombre}</div>
-              <div className="text-sm h-5 overflow-hidden whitespace-no-wrap" style={{ textOverflow: 'ellipsis' }}>{product.descripcion}</div>
+              <div className="text-sm h-5 overflow-hidden whitespace-nowrap" style={{ textOverflow: 'ellipsis' }}>{product.descripcion}</div>
               <div className="flex align-middle font-semibold text-lg mt-3 text-black">${product.precio}</div>
             </div>
           </div>
