@@ -79,7 +79,7 @@ function liteCarousel({ categories, children }) {
           categories.map((el) => (
             <SwiperSlide key={el.id} className="h-full flex">
               <label
-                className="w-full flex flex-col rounded-lg bg-white relative mt-1px
+                className="w-full flex flex-col rounded-lg bg-white mt-1px
                            overflow-hidden cursor-pointer border-solid border border-gray-300"
               >
                 <input
@@ -90,14 +90,13 @@ function liteCarousel({ categories, children }) {
                   className="absolute opacity-0 top-0 left-0 cursor-pointer h-full w-full"
                   onChange={changeCategory}
                 />
-                <span className="flex items-center justify-center w-full overflow-hidden h-40">
+                <span className="flex relative items-center justify-center w-full overflow-hidden h-40">
                   <Image
                     alt={el.nombre}
                     className="max-w-full block w-full h-full object-cover"
                     src={getUrl(getUrlImage(el.thumb))}
-                    height={214}
-                    width={203}
-                    layout="fixed"
+                    layout="fill"
+                    objectFit="cover"
                     loading="eager"
                   />
                 </span>
