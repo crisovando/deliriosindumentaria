@@ -33,7 +33,7 @@ export default function Index({ result, preview }) {
   )
 }
 
-export async function getStaticProps({ preview = null }) {
+export async function getServerSideProps({ preview = null }) {
   const result = (await getDataForHome()) || initData;
   return {
     props: { result, preview },
