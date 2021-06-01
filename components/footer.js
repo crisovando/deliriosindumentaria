@@ -3,7 +3,7 @@ import { EXAMPLE_PATH } from '@/lib/constants';
 
 export default function Footer({ contactData }) {
   return (
-    <footer className="bg-accent-1 border-t border-accent-2">
+    <footer className="bg-accent-1 border-t border-accent-2" id="contact">
       <Container>
         <div className="relative flex items-top justify-center bg-white dark:bg-gray-900 sm:pt-0">
           <div className="w-full xl mx-auto sm:px-6 lg:px-8">
