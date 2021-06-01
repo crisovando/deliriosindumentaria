@@ -36,13 +36,14 @@ export default function Store({ products }) {
                   layout="fill"
                   className="thumb"
                   loading="eager"
+                  objectFit="cover"
                 />
                 {product.fotos.length > 1 && (
                   <Image
                     src={getUrl(product.fotos[1].formats.small.url)}
                     alt={product.descripcion}
                     layout="fill"
-                    objectFit="contain"
+                    objectFit="cover"
                     className="thumb-2"
                     loading="eager"
                   />
