@@ -37,6 +37,16 @@ export default function Store({ products }) {
                   className="thumb"
                   loading="eager"
                 />
+                {product.fotos.length > 1 && (
+                  <Image
+                    src={getUrl(product.fotos[1].formats.small.url)}
+                    alt={product.descripcion}
+                    layout="fill"
+                    objectFit="contain"
+                    className="thumb-2"
+                    loading="eager"
+                  />
+                )}
               </LazyLoad>
             </div>
             <div className="product-description">

@@ -411,6 +411,14 @@
   object-fit: cover;
   border-radius: 0!important;
   margin-bottom: 0!important;
+  opacity: 1;
+}
+.product-thumb .thumb-2 {
+  opacity: 0;
+}
+
+.product-thumb:hover .thumb-2 {
+  opacity: 1;
 }
 
 .product-description {
